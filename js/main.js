@@ -41,7 +41,7 @@ Snake.prototype.die = function(){
 
 function Map(){
   this.gs=20;
-  this.tcx = 60;
+  this.tcx = 50;
   this.tcy = 30;
 }
 
@@ -65,11 +65,15 @@ function game(){
   var canvas = document.getElementById("snakeCanvas");
   var ctx = canvas.getContext("2d");
 
+
+
   ctx.clearRect(0,0,innerWidth,innerHeight);
   ctx.font = "15px Courier New";
   ctx.strokeStyle= 'black';
-  ctx.strokeText("Score:", 10, 10, 100);
-  ctx.strokeText(snake.score,70,10,130);
+  // ctx.strokeText("Score:", 10, 10, 100);
+  // ctx.strokeText(snake.score,70,10,130);
+  document.getElementById("scoreArea").innerHTML="Score: "+snake.score;
+
   snake.x+=snake.xv;
   snake.y+=snake.yv;
   if(snake.x<0){

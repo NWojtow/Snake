@@ -43,27 +43,21 @@
     ga('create', 'UA-XXXXX-Y', 'auto'); ga('set','transport','beacon'); ga('send', 'pageview')
   </script>
   <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-<div>
-  <h1 class="titleClass">MegaWonsz9</h1>
-  <h2 class="descriptionClass">Snake multiplayer game</h2>
-</div>
-<div>
-<!--  <label class="labelClass">Score</label>-->
-<!--  <label>-->
-<!--    <span id="myText"></span>-->
-<!--  </label>-->
-  <canvas class="gameBoardClass" id="snakeCanvas" width="1200" height="600"></canvas>
-</div>
-<!--<script>-->
-<!--  window.onload=function(){-->
-<!--  var canvas = document.getElementById("snakeCanvas");-->
-<!--  var ctx = canvas.getContext("2d");-->
-<!--  document.addEventListener("keydown",keyPush);-->
+  <div class="watermarkDiv">
+    <h3 class="waterMark">MegaWonsz9 by Norbert Wójtowicz</h3>
+  </div>
 
-<!--  setInterval(game,1000/15);-->
-<!--  }-->
-<!--</script>-->
-  <h3 class="waterMark">MegaWonsz9 by Norbert Wójtowicz</h3>
+  <div class="titleDiv">
+  <p class="titleClass">MegaWonsz9</p>
+  <p class="descriptionClass">Snake multiplayer game</p>
+
+  <p class="scoreClass" id="scoreArea"></p>
+</div>
+
+<div class="boardDiv">
+
+  <canvas class="gameBoardClass" id="snakeCanvas" width="1000" height="600"></canvas>
+</div>
 
 
 
