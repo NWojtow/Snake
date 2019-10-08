@@ -5,6 +5,8 @@ var map;
 var snake = [];
 
 
+
+
 function init() {
   var canvas = document.getElementById("snakeCanvas");
   var ctx = canvas.getContext("2d");
@@ -18,7 +20,29 @@ function init() {
 
 }
 
+function redSnake(snake){
+  snake.color="red";
+}
 
+function limeSnake(snake){
+  snake.color="lime";
+}
+
+function blueSnake(snake){
+  snake.color="blue";
+}
+
+function easyMode(snake){
+  snake.mode=1;
+}
+
+function mediumMode(snake){
+  snake.mode=20;
+}
+
+function hardMode(snake){
+  snake.mode=50;
+}
 
 function Snake(){
   var id = "";
@@ -29,6 +53,8 @@ function Snake(){
   this.tail=5;
   this.trail=[];
   this.score=0;
+  this.color = "lime";
+  this.mode=1;
 }
 
 Snake.prototype.eat = function(){
@@ -68,8 +94,8 @@ function game(){
 
 
   ctx.clearRect(0,0,innerWidth,innerHeight);
-  ctx.font = "15px Courier New";
-  ctx.strokeStyle= 'black';
+  // ctx.font = "15px Courier New";
+  // ctx.strokeStyle= 'black';
   // ctx.strokeText("Score:", 10, 10, 100);
   // ctx.strokeText(snake.score,70,10,130);
   document.getElementById("scoreArea").innerHTML="Score: "+snake.score;
@@ -89,9 +115,13 @@ function game(){
     snake.y=0;
   }
 
-  ctx.fillStyle="lime";
   for(var i =0; i<snake.trail.length; i++){
-    ctx.fillRect(snake.trail[i].x*map.gs,snake.trail[i].y*map.gs,map.gs-2,map.gs-2);
+    if(i==snake.trail.length-1){
+      ctx.fillStyle="darkgreen";
+    }else {
+      ctx.fillStyle = snake.color;
+    }
+    ctx.fillRect(snake.trail[i].x*map.gs,snake.trail[i].y*map.gs,map.gs,map.gs);
     if(snake.trail[i].x==snake.x&&snake.trail[i].y==snake.y){
       snake.tail = 5;
       snake.score=0;
@@ -119,25 +149,25 @@ function keyPush(evt){
   evt.preventDefault();
   switch(evt.keyCode){
     case 37:
-      if(snake.xv!=1){
-      snake.xv = -1;
+      if(snake.xv!=snake.mode){
+      snake.xv = -snake.mode;
       snake.yv=0;
       }
       break;
     case 38:
-      if(snake.yv!=1){
+      if(snake.yv!=snake.mode){
       snake.xv=0;
-      snake.yv = -1;}
+      snake.yv = -snake.mode;}
       break;
     case 39:
-      if(snake.xv!=-1){
-      snake.xv=1;
+      if(snake.xv!=-snake.mode){
+      snake.xv=snake.mode;
       snake.yv=0;}
       break;
     case 40:
       if(snake.yv!=-1) {
         snake.xv = 0;
-        snake.yv = 1;}
+        snake.yv = snake.mode;}
         break;
   }
 }
